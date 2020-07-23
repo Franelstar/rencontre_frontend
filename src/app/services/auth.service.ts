@@ -1,73 +1,38 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import * as firebase from 'firebase';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
-  options: any;
+  private subject = new Subject<any>();
+
   constructor(private http: HttpClient) {
-    this.options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
   }
 
-  createNewUser(email: string, password: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
-    );
-  }
+  // createNewUser(email: string, password: string) {
 
-  signInUser(email: string, password: string) {
+  // }
+
+  signInUser(email: string, password: string): Observable<any> {
     return this.http.post(`${environment.apiUrl}auth/login`, {
-      email: email,
-      password: password
-    }, this.options);
+      email,
+      password
+    });
   }
 
-  signInUser2(email: string, password: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
-    );
+  signOutUser(): Observable<any> {
+    this.subject.next({ b: false });
+    return this.http.get(`${environment.apiUrl}auth/logout`);
   }
 
-  signOutUser(){
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
-      })
-    };
-    return this.http.get(`${environment.apiUrl}auth/logout`, options);
+  reloadHeader(isAuth: boolean): void{
+    this.subject.next({ b: isAuth });
   }
 
-  signOutUser2(){
-    firebase.auth().signOut();
+  emitReloadHeader(): Observable<any>{
+    return this.subject.asObservable();
   }
 }

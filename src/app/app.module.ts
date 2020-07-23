@@ -9,7 +9,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './services/auth.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import {AuthGuard} from './services/auth-guard.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,12 +20,19 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ErrorInterceptor} from '@app/_helpers/error-interceptor';
+import {JwtInterceptor} from '@app/_helpers/jwt.interceptor';
+import {AuthGuardInv} from '@app/services/auth-guard.service.inv';
+import {MatRadioModule} from '@angular/material/radio';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: IndexViewComponent },
-  { path: 'auth/signin', component: SigninComponent },
-  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', canActivate: [AuthGuardInv], component: SigninComponent },
+  { path: 'auth/signup', canActivate: [AuthGuardInv], component: SignupComponent },
   { path: '', component: IndexViewComponent, pathMatch: 'full' },
   { path: 'not-found', canActivate: [AuthGuard], component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' }
@@ -53,11 +60,18 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MDBBootstrapModule.forRoot(),
+    MatFormFieldModule,
+    MatDatepickerModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AuthGuardInv
   ],
 
   bootstrap: [AppComponent]

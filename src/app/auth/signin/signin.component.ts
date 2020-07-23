@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signin',
@@ -25,14 +24,14 @@ export class SigninComponent implements OnInit {
     this.initForm();
   }
 
-  initForm() {
+  initForm(): void {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{1,}/)]]
+      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{2,}/)]]
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     this.loading = true;
     const email = this.signInForm.get('email').value;
@@ -41,11 +40,11 @@ export class SigninComponent implements OnInit {
       (res: any) => {
         // Store the access token in the localstorage
         localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/home']);
-        location.reload();
-        //this.loading = false;
+        this.router.navigate(['/home']).then();
+        this.authSerice.reloadHeader(true);
+        // this.loading = false;
         // Navigate to home page
-        //this.router.navigate(['/home']);
+        // this.router.navigate(['/home']);
       }, (err: any) => {
         // This error can be internal or invalid credentials
         // You need to customize this based on the error.status code

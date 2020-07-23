@@ -1,17 +1,126 @@
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-    <h2>Créer un compte</h2>
-    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" id="email" class="form-control" formControlName="email">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" formControlName="password">
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="signUpForm.invalid">Créer un compte</button>
-    </form>
-    <p class="text-danger">{{ errorMessage }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <!-- Default form register -->
+      <form class="text-center border border-light p-5" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+        <p class="h4 mb-4">Inscription</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            Je suis
+          </div>
+          <div class="col">
+            <!-- First name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jesuis1" name="jesuis" value="m" mdbInput formControlName="jesuis">
+              <label class="custom-control-label" for="jesuis1">Un homme</label>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jesuis2" name="jesuis" value="f" mdbInput formControlName="jesuis">
+              <label class="custom-control-label" for="jesuis2">Une femme</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            Je cherche
+          </div>
+          <div class="col">
+            <!-- First name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jecherche1" name="jecherche" value="m" mdbInput formControlName="jecherche">
+              <label class="custom-control-label" for="jecherche1">Un homme</label>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jecherche2" name="jecherche" value="f" mdbInput formControlName="jecherche">
+              <label class="custom-control-label" for="jecherche2">Une femme</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            <div class="md-form">
+              <input mdbInput type="text" id="nom" class="form-control" formControlName="nom">
+              <label for="nom">Nom</label>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="md-form">
+              <input mdbInput type="text" id="prenom" class="form-control" formControlName="prenom">
+              <label for="prenom">Prénom</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-mail -->
+        <div class="md-form mb-4">
+          <input mdbInput type="text" id="email" class="form-control" formControlName="email">
+          <label for="email">Email</label>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+          <input mdbInput type="password" id="password" class="form-control" formControlName="password">
+          <label for="password">Mot de passe</label>
+          <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted">
+            Au moins 8 caractères, y compris un chiffre
+          </small>
+        </div>
+
+        <div class="md-form">
+          <input mdbInput type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
+          <label for="password_confirm">Confirmer Mot de passe</label>
+        </div>
+
+        <div class="row">
+          <div class="mx-auto d-flex justify-content-center">
+            <mdb-checkbox [default]="true" ormControlName="acceptTerms">
+              J'accepte les CGU et la <a href="" target="_blank">Déclaration de protection des données</a> , et certifie être majeur(e).
+            </mdb-checkbox>
+          </div>
+        </div>
+
+        <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+        <!-- Sign up button -->
+        <button mdbBtn color="info" block="true" class="my-4" type="submit" >S'inscrire</button>
+
+        <!-- Social register -->
+        <p>Ou s'inscrire avec:</p>
+
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="facebook"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="twitter"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="linkedin"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="google"></mdb-icon>
+        </a>
+
+        <hr>
+
+      </form>
+      <!-- Default form register -->
+    </div>
+    <div class="col-sm">
+      <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" class="img-fluid z-depth-1" alt="Responsive image">
+    </div>
   </div>
 </div>

@@ -1,11 +1,65 @@
-<mat-toolbar color="primary">
-  <h1>
-    ngStore
-  </h1>
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/about">Abouts</button>
+<div class="sticky-top">
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
-  <button mat-button routerLink="auth/signup">Créer un compte</button>
-  <button mat-button routerLink="auth/signin">Déconnexion</button>
+    <!-- Navbar brand -->
+    <mdb-navbar-brand>
+      <mdb-icon fas icon="heart" size="2x" class="amber-text"></mdb-icon>
+      <a class="navbar-brand amber-text" routerLink="/about">Rencontre.com</a>
+    </mdb-navbar-brand>
 
-</mat-toolbar>
+    <!-- Collapsible content -->
+    <links>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect >Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="/about">Abouts</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            Basic dropdown<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          </div>
+        </li>
+
+      </ul>
+      <!-- Links -->
+
+      <ul class="navbar-nav ml-auto nav-flex-icons" *ngIf="isAuth">
+        <li class="nav-item">
+          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+        </li>
+
+        <li class="nav-item avatar dropdown" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0"></a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+          </div>
+        </li>
+      </ul>
+
+      <button style="margin:10px" mat-raised-button color="basic" routerLink="auth/signin" *ngIf="!isAuth">Se connecter</button>
+      <button mat-flat-button color="warn" routerLink="auth/signup" *ngIf="!isAuth">Inscrivez-vous!</button>
+
+    </links>
+    <!-- Collapsible content -->
+
+  </mdb-navbar>
+  <!--/.Navbar-->
+</div>
