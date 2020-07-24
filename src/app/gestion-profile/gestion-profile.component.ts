@@ -1,21 +1,19 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
 import {AuthService} from '@app/services/auth.service';
 import {Router} from '@angular/router';
-import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-gestion-profile',
+  templateUrl: './gestion-profile.component.html',
+  styleUrls: ['./gestion-profile.component.scss']
 })
-export class SignupComponent implements OnInit, OnDestroy {
+export class GestionProfileComponent implements OnInit {
 
   signUpForm: FormGroup;
   errorMessage: string;
   userSubscription: Subscription;
-  loading: boolean;
-  cheminImage = 'assets/img/register.jpg';
 
   constructor(private formBuilder: FormBuilder,
               private authSerice: AuthService,
@@ -25,12 +23,14 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initForm();
-    this.loading = false;
   }
 
   initForm(): void {
     this.signUpForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      jecherche: ['', [Validators.required]],
+      jesuis: ['', [Validators.required]],
+      nom: ['', [Validators.required]],
+      prenom: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       password_confirm: ['', [Validators.required, Validators.minLength(8)]],
@@ -60,37 +60,41 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.loading = true;
-    const name = this.signUpForm.get('name').value;
+    const jesuis = this.signUpForm.get('jesuis').value;
+    const jecherche = this.signUpForm.get('jecherche').value;
+    const nom = this.signUpForm.get('nom').value;
+    const prenom = this.signUpForm.get('prenom').value;
     const email = this.signUpForm.get('email').value;
     const password = this.signUpForm.get('password').value;
     const password_confirm = this.signUpForm.get('password_confirm').value;
 
-    this.userSubscription = this.authSerice.createNewUser(name, email, password, password_confirm).subscribe(
+    this.userSubscription = this.authSerice.createNewUser(nom, email, password, password_confirm).subscribe(
       () => {
         // Store the access token in the localstorage
         // console.log(res);
-        this.router.navigate(['/auth/signin']).then();
+        this.router.navigate(['/signin']).then();
       }, (err: any) => {
         // This error can be internal or invalid credentials
         // You need to customize this based on the error.status code
         this.errorMessage = err.error.message;
         if (typeof err.error.errors !== 'undefined' && typeof err.error.errors === 'object') {
-          if (typeof err.error.errors.name !== 'undefined') {
-            this.errorMessage = err.error.errors.name[0];
+          if (typeof err.error.errors.nom !== 'undefined') {
+            this.errorMessage = err.error.errors.nom[0];
+          } else if (typeof err.error.errors.prenom !== 'undefined') {
+            this.errorMessage = err.error.errors.prenom[0];
+          } else if (typeof err.error.errors.sexe !== 'undefined') {
+            this.errorMessage = err.error.errors.sexe[0];
           } else if (typeof err.error.errors.email !== 'undefined') {
             this.errorMessage = err.error.errors.email[0];
           } else if (typeof err.error.errors.password !== 'undefined') {
             this.errorMessage = err.error.errors.password[0];
           }
         }
-        this.loading = false;
       });
   }
 
   ngOnDestroy(): void {
-    if (this.userSubscription != null) {
-      this.userSubscription.unsubscribe();
-    }
+    this.userSubscription.unsubscribe();
   }
+
 }

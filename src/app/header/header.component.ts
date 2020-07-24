@@ -21,8 +21,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('access_token'));
-    console.log(this.isAuth);
     if (localStorage.getItem('access_token')) {
       this.isAuth = true;
     } else {

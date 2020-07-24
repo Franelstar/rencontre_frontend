@@ -9,10 +9,10 @@ import { AuthService } from '@app/services/auth.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  submitted = false;
   loading = false;
   signInForm: FormGroup;
   errorMessage: string;
+  cheminImage = 'assets/img/connexion.jpg';
 
   constructor(private formBuilder: FormBuilder,
               private authSerice: AuthService,
@@ -27,28 +27,27 @@ export class SigninComponent implements OnInit {
   initForm(): void {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{2,}/)]]
+      password: ['', [Validators.required]],
+      remember: [false]
     });
   }
 
   onSubmit(): void {
-    this.submitted = true;
     this.loading = true;
     const email = this.signInForm.get('email').value;
     const password = this.signInForm.get('password').value;
-    this.authSerice.signInUser(email, password).subscribe(
+    const remember = this.signInForm.get('remember').value;
+    this.authSerice.signInUser(email, password, remember).subscribe(
       (res: any) => {
         // Store the access token in the localstorage
         localStorage.setItem('access_token', res.access_token);
         this.router.navigate(['/home']).then();
         this.authSerice.reloadHeader(true);
-        // this.loading = false;
-        // Navigate to home page
-        // this.router.navigate(['/home']);
+        this.loading = false;
       }, (err: any) => {
         // This error can be internal or invalid credentials
         // You need to customize this based on the error.status code
-        this.errorMessage = err;
+        this.errorMessage = 'Email ou Mot de passe incorrect';
         this.loading = false;
       });
   }

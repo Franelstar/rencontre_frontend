@@ -1,10 +1,40 @@
-<div class="card mt-4">
-  <h4 class="card-header">You're logged in with Angular 10 & JWT!!</h4>
-  <div class="card-body">
-    <h6>Users from secure api end point</h6>
-    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-    <ul *ngIf="users">
-      <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
-    </ul>
+<header class="v-header contaier jarallax" data-jarallax='{"speed": 0.2}'>
+  <div class="fullscreen-video-wrap">
+    <video [src]="pathVideo" autoplay="true" loop="true" playsinline muted ></video>
   </div>
-</div>
+  <div class="header-overlay"></div>
+  <div class="header-content container flex-center view jarallax" data-jarallax='{"speed": 0.2}' style="margin-top: -200px">
+    <div class="row w-100">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h2 class="h1 h1-reponsive white-text font-up font-bold mb-3 wow animate__animated animate__fadeInDown" data-wow-delay="0.5s">
+            <strong>Rencontre.com</strong></h2>
+          <hr class="hr-light mt-4 wow animate__animated animate__fadeInDown" data-wow-delay="0.7s">
+          <h5 class="font-up mb-5 white-text wow animate__animated animate__fadeInDown" data-wow-delay="1.0s">
+            <strong>Le site qui vous assemble et qui vous ressemble</strong></h5>
+          <a mdbBtn color="white" outline="true" class="wow animate__animated animate__fadeInDown waves-light" data-wow-delay="1.7s"
+             mdbWavesEffect>portfolio</a>
+          <a mdbBtn color="white" outline="true" class="wow animate__animated animate__fadeInDown waves-light" data-wow-delay="1.7s"
+             mdbWavesEffect>About me</a>
+         </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section section-a">
+  <div class="container">
+    <h1>Section A</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium ad alias aliquid atque autem beatae deleniti deserunt distinctio doloribus eaque eligendi enim expedita facere fuga fugiat fugit hic illo impedit ipsam iure iusto laboriosam laborum, magni minima modi nam nemo nobis odio porro quas saepe sapiente soluta tempora voluptatum.</p>
+  </div>
+</section>
+
+<section class="section section-b animated bounce infinite">
+  <div class="container">
+    <h1>Section B</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium ad alias aliquid atque autem beatae deleniti deserunt distinctio doloribus eaque eligendi enim expedita facere fuga fugiat fugit hic illo impedit ipsam iure iusto laboriosam laborum, magni minima modi nam nemo nobis odio porro quas saepe sapiente soluta tempora voluptatum.</p>
+    <img class="animate__bounce animate__infinite animate__animated" src="https://mdbootstrap.com/img/logo/mdb-transparent.png">
+  </div>
+</section>
+
+

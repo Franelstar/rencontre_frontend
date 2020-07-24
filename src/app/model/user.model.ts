@@ -1,11 +1,11 @@
 export class User {
   photo: string;
   constructor(public id: number,
-              public username: string,
-              public password: string,
-              public firstname: string,
-              public lastnale: string,
+              public nom: string,
+              public prenom: string,
               public email: string,
-              public token?: string) {
+              public password: string,
+              public sexe: string,
+              public dateNaissnance: Date) {
   }
 }

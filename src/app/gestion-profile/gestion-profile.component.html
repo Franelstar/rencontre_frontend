@@ -1,0 +1,131 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <!-- Default form register -->
+      <form class="text-center border border-light p-5" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+        <p class="h4 mb-4">Inscription</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            Je suis
+          </div>
+          <div class="col">
+            <!-- First name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jesuis1" name="jesuis" value="m" mdbInput formControlName="jesuis">
+              <label class="custom-control-label" for="jesuis1">Un homme</label>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jesuis2" name="jesuis" value="f" mdbInput formControlName="jesuis">
+              <label class="custom-control-label" for="jesuis2">Une femme</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            Je cherche
+          </div>
+          <div class="col">
+            <!-- First name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jecherche1" name="jecherche" value="m" mdbInput formControlName="jecherche">
+              <label class="custom-control-label" for="jecherche1">Un homme</label>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="jecherche2" name="jecherche" value="f" mdbInput formControlName="jecherche">
+              <label class="custom-control-label" for="jecherche2">Une femme</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            <div class="md-form">
+              <input mdbInput type="text" id="nom" class="form-control" formControlName="nom">
+              <label for="nom">Nom *</label>
+              <mdb-error *ngIf="signUpForm.get('nom').invalid && (signUpForm.get('nom').dirty || signUpForm.get('nom').touched)">Votre nom est vide</mdb-error>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <div class="md-form">
+              <input mdbInput type="text" id="prenom" class="form-control" formControlName="prenom">
+              <label for="prenom">Prénom</label>
+              <mdb-error *ngIf="signUpForm.get('prenom').invalid && (signUpForm.get('prenom').dirty || signUpForm.get('prenom').touched)">Votre prénom est vide</mdb-error>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-mail -->
+        <div class="md-form mb-4">
+          <input mdbInput name="email" type="email" id="email" class="form-control"
+                 formControlName="email">
+          <label for="email">Email *</label>
+          <mdb-error *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').value != '' && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">Votre Email est invalide</mdb-error>
+          <mdb-error *ngIf="signUpForm.get('email').value == '' && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">Votre Email est vide</mdb-error>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+          <input mdbInput type="password" id="password" class="form-control" formControlName="password">
+          <label for="password">Mot de passe</label>
+          <mdb-error *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">Votre mot de passe doit avoir au moins 8 caractères</mdb-error>
+        </div>
+
+        <div class="md-form">
+          <input mdbInput type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
+          <label for="password_confirm">Confirmer Mot de passe</label>
+          <mdb-error *ngIf="signUpForm.get('password_confirm').invalid && (signUpForm.get('password_confirm').dirty || signUpForm.get('password_confirm').touched)">Vos mots de passe ne sont pas identiques</mdb-error>
+        </div>
+
+        <div class="row">
+          <div class="mx-auto d-flex justify-content-center">
+            <mdb-checkbox [default]="true" formControlName="acceptTerms">
+              J'accepte les CGU et la <a href="" target="_blank">Déclaration de protection des données</a> , et certifie être majeur(e).
+              <mdb-error  class="mt-2" style="text-align: center" *ngIf="signUpForm.get('acceptTerms').invalid && (signUpForm.get('acceptTerms').dirty || signUpForm.get('acceptTerms').touched)">Vous devez accepter les conditions d'utilisation de l'application</mdb-error>
+            </mdb-checkbox>
+          </div>
+        </div>
+
+        <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+        <!-- Sign up button -->
+        <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
+
+        <!-- Social register -->
+        <p>Ou s'inscrire avec:</p>
+
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="facebook"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="twitter"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="linkedin"></mdb-icon>
+        </a>
+        <a type="button" class="light-blue-text mx-2">
+          <mdb-icon fab icon="google"></mdb-icon>
+        </a>
+
+        <hr>
+
+      </form>
+      <!-- Default form register -->
+    </div>
+    <div class="col-sm">
+      <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" class="img-fluid z-depth-1" alt="Responsive image">
+    </div>
+  </div>
+</div>

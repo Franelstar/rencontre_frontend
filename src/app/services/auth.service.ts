@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import {HttpClient} from '@angular/common/http';
-import {Observable, Subject} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, Subject, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,25 @@ export class AuthService{
   constructor(private http: HttpClient) {
   }
 
-  // createNewUser(email: string, password: string) {
+   createNewUser(name: string,
+                 email: string,
+                 password: string,
+                 password_confirmation: string): Observable<any> {
+     return this.http.post(`${environment.apiUrl}auth/signup`, {
+       name,
+       email,
+       password,
+       password_confirmation
+     }).pipe(
+       retry(2)
+     );
+   }
 
-  // }
-
-  signInUser(email: string, password: string): Observable<any> {
+  signInUser(email: string, password: string, remember_me: boolean): Observable<any> {
     return this.http.post(`${environment.apiUrl}auth/login`, {
       email,
-      password
+      password,
+      remember_me
     });
   }
 

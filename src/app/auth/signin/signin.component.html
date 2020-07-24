@@ -1,28 +1,78 @@
-<div class="col-md-6 offset-md-3 mt-5">
-  <div class="card">
-    <h4 class="card-header">Connexion</h4>
-    <div class="card-body">
-      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && signInForm.get('email').invalid }" />
-          <div *ngIf="submitted && signInForm.get('email').invalid" class="invalid-feedback">
-            <div *ngIf="signInForm.get('email').value == ''">Username is required</div>
+<header class="v-header contaier">
+  <div class="fullscreen-video-wrap">
+    <img [src]="cheminImage">
+  </div>
+  <div class="header-overlay"></div>
+  <div class="header-content container flex-center">
+    <div class="row" style="width: 100%;margin-top: -90px">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm">
+        <!-- Default form register -->
+        <form class="text-center border border-light p-5 wow animate__animated animate__fadeInRight" data-wow-delay="0.5s" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+
+          <div class="text-center">
+            <h3 class="white-text">
+              <mdb-icon fas icon="user" class="text-white"></mdb-icon> Connexion</h3>
+            <hr class="hr-light">
           </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && signInForm.get('password').invalid }" />
-          <div *ngIf="submitted && signInForm.get('password').invalid" class="invalid-feedback">
-            <div *ngIf="signInForm.get('password').value == ''">Password is required</div>
+
+          <!-- E-mail -->
+          <div class="md-form mb-4">
+            <input mdbInput name="email" type="email" id="email" class="form-control"
+                   formControlName="email">
+            <label for="email">Email</label>
+            <mdb-error *ngIf="signInForm.get('email').invalid && signInForm.get('email').value != '' && (signInForm.get('email').dirty || signInForm.get('email').touched)">Votre Email est invalide</mdb-error>
+            <mdb-error *ngIf="signInForm.get('email').value == '' && (signInForm.get('email').dirty || signInForm.get('email').touched)">Le champ Email est requis</mdb-error>
           </div>
-        </div>
-        <button [disabled]="loading" class="btn btn-primary">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Login
-        </button>
-        <div *ngIf="errorMessage" class="alert alert-danger mt-3 mb-0">{{errorMessage}}</div>
-      </form>
+
+          <!-- Password -->
+          <div class="md-form">
+            <input mdbInput type="password" id="password" class="form-control" formControlName="password">
+            <label for="password">Mot de passe</label>
+            <mdb-error *ngIf="signInForm.get('password').invalid && (signInForm.get('password').dirty || signInForm.get('password').touched)">Le champ Mot de passe est requis</mdb-error>
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <div>
+              <!-- Remember me -->
+              <mdb-checkbox [default]="true" formControlName="remember">Se souvenir de moi</mdb-checkbox>
+            </div>
+            <div>
+              <!-- Forgot password -->
+              <a [routerLink]="['/auth/forgot_password']">Mot de passe oublié ?</a>
+            </div>
+          </div>
+
+          <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+          <!-- Sign in button -->
+          <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="signInForm.invalid">Se connecter <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span></button>
+
+          <!-- Register -->
+          <p>Pas encore inscrit ?
+            <a [routerLink]="['/auth/signup']">S'inscrire</a>
+          </p>
+
+          <!-- Social login -->
+          <p>Connectez vous avec:</p>
+
+          <a type="button" class="text-white mx-2">
+            <mdb-icon fab icon="facebook"></mdb-icon>
+          </a>
+          <a type="button" class="text-white mx-2">
+            <mdb-icon fab icon="twitter"></mdb-icon>
+          </a>
+          <a type="button" class="text-white mx-2">
+            <mdb-icon fab icon="linkedin"></mdb-icon>
+          </a>
+          <a type="button" class="text-white mx-2">
+            <mdb-icon fab icon="google"></mdb-icon>
+          </a>
+
+        </form>
+        <!-- Default form register -->
+      </div>
     </div>
   </div>
-</div>
+</header>

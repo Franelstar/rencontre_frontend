@@ -27,14 +27,16 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { GestionProfileComponent } from './gestion-profile/gestion-profile.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: IndexViewComponent },
   { path: 'auth/signin', canActivate: [AuthGuardInv], component: SigninComponent },
   { path: 'auth/signup', canActivate: [AuthGuardInv], component: SignupComponent },
+  { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent },
   { path: '', component: IndexViewComponent, pathMatch: 'full' },
-  { path: 'not-found', canActivate: [AuthGuard], component: FourOhFourComponent },
+  { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' }
 ];
 
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     FourOhFourComponent,
     SignupComponent,
     SigninComponent,
-    HeaderComponent
+    HeaderComponent,
+    GestionProfileComponent
   ],
   imports: [
     BrowserModule,
