@@ -28,11 +28,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { GestionProfileComponent } from './gestion-profile/gestion-profile.component';
+import { InformationsComponent } from './gestion-profile/informations/informations.component';
+import { FooterComponent } from './footer/footer.component';
+import { GestionProfileRoutingModule } from  './gestion-profile/gestion-profile-routing.module';
+import { HomeComponent } from './gestion-profile/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: IndexViewComponent },
-  { path: 'auth/signin', canActivate: [AuthGuardInv], component: SigninComponent },
+  { path: 'auth/signin', canActivate: [AuthGuardInv], component: SigninComponent, data: { title: 'Authentification' } },
   { path: 'auth/signup', canActivate: [AuthGuardInv], component: SignupComponent },
   { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent },
   { path: '', component: IndexViewComponent, pathMatch: 'full' },
@@ -49,12 +53,16 @@ const appRoutes: Routes = [
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    GestionProfileComponent
+    GestionProfileComponent,
+    InformationsComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
+    GestionProfileRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
