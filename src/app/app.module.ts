@@ -32,6 +32,7 @@ import { InformationsComponent } from './gestion-profile/informations/informatio
 import { FooterComponent } from './footer/footer.component';
 import { GestionProfileRoutingModule } from  './gestion-profile/gestion-profile-routing.module';
 import { HomeComponent } from './gestion-profile/home/home.component';
+import { SearchPartenerComponent } from './gestion-profile/search-partner/search-partner.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     GestionProfileComponent,
     InformationsComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    SearchPartenerComponent
   ],
   imports: [
     BrowserModule,
