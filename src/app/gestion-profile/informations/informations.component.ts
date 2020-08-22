@@ -30,7 +30,6 @@ export class InformationsComponent implements OnInit {
       sexe: ['', [Validators.required]],
       jesuis: ['', [Validators.required]],
       nom: ['', [Validators.required]],
-      nom2: ['', [Validators.required]],
       prenom: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -38,6 +37,7 @@ export class InformationsComponent implements OnInit {
       acceptTerms: [false, Validators.requiredTrue],
       dn: ['', [Validators.required]],
       os: ['', [Validators.required]],
+      sexe_cherche: ['', [Validators.required]],
     }, {
       validator: this.MustMatch('password', 'password_confirm')
     });
@@ -97,7 +97,9 @@ export class InformationsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
 }

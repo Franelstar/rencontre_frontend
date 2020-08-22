@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md">
                 <div class="row p-3">
-        
+
                     <label>Je suis</label>
                     <!-- Name -->
                     <input mdbInput type="text" id="nom" class="form-control mb-4" placeholder="Nom" formControlName="nom">
@@ -19,10 +19,10 @@
                         <option value="M">Masculin</option>
                         <option value="F">Féminin</option>
                     </select>
-                
+
                     <!-- DN -->
                     <input mdbInput type="text" id="dn" class="form-control mb-4" placeholder="Date de naissance" formControlName="dn">
-                
+
                     <!-- OS -->
                     <select class="browser-default custom-select mb-4" formControlName="os">
                         <option value="none" selected disabled>Orientation Sexuelle</option>
@@ -35,14 +35,18 @@
                     <div class="form-group">
                         <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="A propos de moi"></textarea>
                     </div>
-                
+
                 </div>
             </div>
             <div class="col-md p-3">
                 <div class="row">
                     <label>Je cherche</label>
-                    <!-- Name -->
-                    <input mdbInput type="text" id="nom2" class="form-control mb-4" placeholder="Nom2" formControlName="nom2">
+                    <!-- sexe -->
+                    <select class="browser-default custom-select mb-4" formControlName="sexe_cherche">
+                      <option value="none" selected disabled>Sexe</option>
+                      <option value="M">Un homme</option>
+                      <option value="F">Une femme</option>
+                    </select>
                 </div>
             </div>
          </div>
@@ -61,9 +65,9 @@
       <div class="col-sm">
         <!-- Default form register -->
         <form class="text-center border border-light p-5" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-  
+
           <p class="h4 mb-4">Inscription</p>
-  
+
           <div class="form-row mb-4">
             <div class="col">
               <!-- First name -->
@@ -82,7 +86,7 @@
               </div>
             </div>
           </div>
-  
+
           <!-- E-mail -->
           <div class="md-form mb-4">
             <input mdbInput name="email" type="email" id="email" class="form-control"
@@ -91,20 +95,20 @@
             <mdb-error *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').value != '' && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">Votre Email est invalide</mdb-error>
             <mdb-error *ngIf="signUpForm.get('email').value == '' && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">Votre Email est vide</mdb-error>
           </div>
-  
+
           <!-- Password -->
           <div class="md-form">
             <input mdbInput type="password" id="password" class="form-control" formControlName="password">
             <label for="password">Mot de passe</label>
             <mdb-error *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">Votre mot de passe doit avoir au moins 8 caractères</mdb-error>
           </div>
-  
+
           <div class="md-form">
             <input mdbInput type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
             <label for="password_confirm">Confirmer Mot de passe</label>
             <mdb-error *ngIf="signUpForm.get('password_confirm').invalid && (signUpForm.get('password_confirm').dirty || signUpForm.get('password_confirm').touched)">Vos mots de passe ne sont pas identiques</mdb-error>
           </div>
-  
+
           <div class="row">
             <div class="mx-auto d-flex justify-content-center">
               <mdb-checkbox [default]="true" formControlName="acceptTerms">
@@ -113,15 +117,15 @@
               </mdb-checkbox>
             </div>
           </div>
-  
+
           <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
-  
+
           <!-- Sign up button -->
           <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
-  
+
           <!-- Social register -->
           <p>Ou s'inscrire avec:</p>
-  
+
           <a type="button" class="light-blue-text mx-2">
             <mdb-icon fab icon="facebook"></mdb-icon>
           </a>
@@ -134,9 +138,9 @@
           <a type="button" class="light-blue-text mx-2">
             <mdb-icon fab icon="google"></mdb-icon>
           </a>
-  
+
           <hr>
-  
+
         </form>
         <!-- Default form register -->
       </div>
@@ -145,4 +149,3 @@
       </div>
     </div>
   </div>
-  

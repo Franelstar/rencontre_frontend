@@ -32,6 +32,7 @@ import { InformationsComponent } from './gestion-profile/informations/informatio
 import { FooterComponent } from './footer/footer.component';
 import { GestionProfileRoutingModule } from  './gestion-profile/gestion-profile-routing.module';
 import { HomeComponent } from './gestion-profile/home/home.component';
+import {DpDatePickerModule} from 'ng2-date-picker';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     GestionProfileComponent,
     InformationsComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    DpDatePickerModule
   ],
   imports: [
     BrowserModule,
