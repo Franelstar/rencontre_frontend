@@ -36,6 +36,7 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { InputFileConfig, InputFileModule } from 'ngx-input-file';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule } from "angular-notifier";
+import { SearchPartenerComponent } from './gestion-profile/search-partner/search-partner.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -62,7 +63,8 @@ const config: InputFileConfig = {};
     GestionProfileComponent,
     InformationsComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    SearchPartenerComponent
   ],
   imports: [
     BrowserModule,

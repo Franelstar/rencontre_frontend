@@ -4,6 +4,7 @@ import { InformationsComponent } from './informations/informations.component';
 import { GestionProfileComponent } from './gestion-profile.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../services/auth-guard.service';
+import { SearchPartenerComponent } from './search-partner/search-partner.component';
 
 const routes: Routes = [
     { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent, 
@@ -11,7 +12,8 @@ const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'informations', component: InformationsComponent}
       ]
-    }
+    },
+    { path: 'search-partner' , component: SearchPartenerComponent}
   ];
 
 @NgModule({

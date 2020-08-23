@@ -1,61 +1,64 @@
 <!--Main Navigation-->
 <header class="intro-header">
 
-  <!--Navbar-->
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color fixed-top scrolling-navbar">
-    <!-- Navbar brand -->
-    <mdb-navbar-brand>
-      <mdb-icon fas icon="heart" size="2x" class="amber-text animate__pulse animate__infinite animate__animated"></mdb-icon>
-      <a class="navbar-brand amber-text" [routerLink]="['']">Rencontre.com</a>
-    </mdb-navbar-brand>
-    <links>
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect >Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="/about">Abouts</a>
-        </li>
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color fixed-top scrolling-navbar">
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <mdb-icon fas icon="heart" size="2x" class="amber-text animate__pulse animate__infinite animate__animated"></mdb-icon>
+            <a class="navbar-brand amber-text" [routerLink]="['']">Rencontre.com</a>
+        </mdb-navbar-brand>
+        <links>
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink="/about">Abouts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink="/search-partner">Find partner  </a>
+                </li>
 
-        <!-- Dropdown -->
-        <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown" dropdown>
+                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             Basic dropdown<span class="caret"></span></a>
-          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-            <div class="divider dropdown-divider"></div>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-          </div>
-        </li>
-      </ul>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+                        <div class="divider dropdown-divider"></div>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+                    </div>
+                </li>
+            </ul>
 
-      <ul class="navbar-nav ml-auto nav-flex-icons" *ngIf="isAuth">
-        <li class="nav-item">
-          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
-        </li>
+            <ul class="navbar-nav ml-auto nav-flex-icons" *ngIf="isAuth">
+                <li class="nav-item">
+                    <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+                </li>
 
-        <li class="nav-item avatar dropdown" dropdown>
-          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0 w-25"></a>
-          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profil">Mon profile</a>
-            <div class="divider dropdown-divider"></div>
-            <a class="dropdown-item waves-light" mdbWavesEffect (click)="onSignOut()">Déconnexion</a>
-          </div>
-        </li>
-      </ul>
+                <li class="nav-item avatar dropdown" dropdown>
+                    <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0 w-25"></a>
+                    <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profil">Mon profile</a>
+                        <div class="divider dropdown-divider"></div>
+                        <a class="dropdown-item waves-light" mdbWavesEffect (click)="onSignOut()">Déconnexion</a>
+                    </div>
+                </li>
+            </ul>
 
-      <button style="margin:10px" mat-raised-button color="basic" routerLink="auth/signin" *ngIf="!isAuth">Se connecter</button>
-      <button mat-flat-button color="warn" routerLink="/auth/signup" *ngIf="!isAuth">Inscrivez-vous!</button>
+            <button style="margin:10px" mat-raised-button color="basic" routerLink="auth/signin" *ngIf="!isAuth">Se connecter</button>
+            <button mat-flat-button color="warn" routerLink="/auth/signup" *ngIf="!isAuth">Inscrivez-vous!</button>
 
-    </links>
-  </mdb-navbar>
+        </links>
+    </mdb-navbar>
 
 </header>
 <!--Main Navigation-->

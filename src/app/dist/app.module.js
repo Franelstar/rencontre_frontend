@@ -44,6 +44,7 @@ var ng2_date_picker_1 = require("ng2-date-picker");
 var ngx_input_file_1 = require("ngx-input-file");
 var ng5_slider_1 = require("ng5-slider");
 var angular_notifier_1 = require("angular-notifier");
+var search_partner_component_1 = require("./gestion-profile/search-partner/search-partner.component");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: index_view_component_1.IndexViewComponent },
@@ -71,7 +72,8 @@ var AppModule = /** @class */ (function () {
                 gestion_profile_component_1.GestionProfileComponent,
                 informations_component_1.InformationsComponent,
                 footer_component_1.FooterComponent,
-                home_component_1.HomeComponent
+                home_component_1.HomeComponent,
+                search_partner_component_1.SearchPartenerComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
