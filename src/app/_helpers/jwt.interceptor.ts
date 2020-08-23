@@ -18,8 +18,8 @@ export class JwtInterceptor implements HttpInterceptor {
             request = request.clone({
                 setHeaders: {
                   Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                  'X-Requested-With': 'XMLHttpRequest',
+                  //'Content-Type': 'application/json',
+                  //'X-Requested-With': 'XMLHttpRequest',
                   Authorization: `Bearer ${isLoggedIn}`
                 }
             });
@@ -27,8 +27,8 @@ export class JwtInterceptor implements HttpInterceptor {
           request = request.clone({
             setHeaders: {
               Accept: 'application/json',
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest',
+              //'Content-Type': 'application/json',
+              //'X-Requested-With': 'XMLHttpRequest',
             }
           });
         }

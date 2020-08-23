@@ -13,7 +13,7 @@ export class AuthService{
   constructor(private http: HttpClient) {
   }
 
-   createNewUser(name: string,
+  createNewUser(name: string,
                  email: string,
                  password: string,
                  password_confirmation: string): Observable<any> {
@@ -25,7 +25,7 @@ export class AuthService{
      }).pipe(
        retry(2)
      );
-   }
+  }
 
   signInUser(email: string, password: string, remember_me: boolean): Observable<any> {
     return this.http.post(`${environment.apiUrl}auth/login`, {

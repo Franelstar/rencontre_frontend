@@ -1,11 +1,20 @@
 export class User {
-  photo: string;
   constructor(public id: number,
-              public nom: string,
-              public prenom: string,
               public email: string,
-              public password: string,
+              public infosPersos: InfosPersonelle) {
+  }
+}
+
+export class InfosPersonelle {
+  constructor(public nom: string,
+              public prenom: string,
               public sexe: string,
-              public dateNaissnance: Date) {
+              public o_sexuele: number,
+              public date_naissance: Date,
+              public apropro: string,
+              public sexe_cherche: string,
+              public age_min: number,
+              public age_max: number,
+              public photo?: string) {
   }
 }

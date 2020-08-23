@@ -41,6 +41,8 @@ export class SigninComponent implements OnInit {
       (res: any) => {
         // Store the access token in the localstorage
         localStorage.setItem('access_token', res.access_token);
+        localStorage.setItem('id', res.user_id);
+        localStorage.setItem('email', res.user_email);
         this.router.navigate(['/home']).then();
         this.authSerice.reloadHeader(true);
         this.loading = false;

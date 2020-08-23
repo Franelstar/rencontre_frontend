@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     } else {
       this.isAuth = false;
     }
-
+console.log(this.isAuth)
     this.subscription = this.authService.emitReloadHeader().subscribe(isAuth => {
       this.isAuth = isAuth;
     });
@@ -36,8 +36,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.signOutUser().subscribe(() => {
       // this.loading = false;
       localStorage.removeItem('access_token');
+      localStorage.removeItem('id');
+      localStorage.removeItem('email');
       this.router.navigate(['/home']);
       this.isAuth = false;
+      console.log(this.isAuth)
     });
   }
 

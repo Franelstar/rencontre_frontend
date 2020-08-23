@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "node_modules/ng5-slider/__ivy_ngcc__/esm2015/ng5-slider.js"
+           ],
             "outputPath": "dist/rencontre-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -37,6 +40,8 @@
               "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "node_modules/animate.css/animate.css",
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/angular-notifier/styles/core.css",
               "src/styles.scss"
             ],
             "scripts": [

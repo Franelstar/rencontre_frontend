@@ -33,6 +33,9 @@ import { FooterComponent } from './footer/footer.component';
 import { GestionProfileRoutingModule } from  './gestion-profile/gestion-profile-routing.module';
 import { HomeComponent } from './gestion-profile/home/home.component';
 import {DpDatePickerModule} from 'ng2-date-picker';
+import { InputFileConfig, InputFileModule } from 'ngx-input-file';
+import { Ng5SliderModule } from 'ng5-slider';
+import { NotifierModule } from "angular-notifier";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -44,6 +47,8 @@ const appRoutes: Routes = [
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' }
 ];
+
+const config: InputFileConfig = {};
 
 @NgModule({
   declarations: [
@@ -57,8 +62,7 @@ const appRoutes: Routes = [
     GestionProfileComponent,
     InformationsComponent,
     FooterComponent,
-    HomeComponent,
-    DpDatePickerModule
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,51 @@ const appRoutes: Routes = [
     MatRadioModule,
     MDBBootstrapModule.forRoot(),
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    DpDatePickerModule,
+    InputFileModule.forRoot(config),
+    Ng5SliderModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right',
+          distance: 12
+        },
+        vertical: {
+          position: 'bottom',
+          distance: 12
+        },
+      },
+      theme: "material",
+      behaviour: {
+        autoHide: 5000,
+        onClick: false,
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: true,
+        stacking: 5
+      },
+      animations: {
+        enabled: true,
+        show: {
+          preset: 'slide',
+          speed: 800,
+          easing: 'ease-in'
+        },
+        hide: {
+          preset: 'slide',
+          speed: 800,
+          easing: 'ease-out',
+          offset: 50
+        },
+
+        shift: {
+          speed: 800,
+          easing: 'ease' // All standard CSS easing methods work
+
+        },
+        overlap: 400
+      }
+  })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
