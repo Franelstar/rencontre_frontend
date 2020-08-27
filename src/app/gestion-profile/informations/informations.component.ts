@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {AuthService} from '@app/services/auth.service';
@@ -13,7 +13,7 @@ import { NotifierService } from "angular-notifier";
   templateUrl: './informations.component.html',
   styleUrls: ['./informations.component.scss']
 })
-export class InformationsComponent implements OnInit {
+export class InformationsComponent implements OnInit, OnDestroy {
 
   private readonly notifier: NotifierService;
 
@@ -90,6 +90,8 @@ export class InformationsComponent implements OnInit {
         if(data[0].age_min != null){
           this.minValue = data[0].age_min;
           this.maxValue = data[0].age_max;
+          this.user.infosPersos.age_min = data[0].age_min;
+          this.user.infosPersos.age_max = data[0].age_max;
         }
         this.user.infosPersos.photo = data[0].photo;
       }, (err: any) => {
@@ -176,4 +178,15 @@ export class InformationsComponent implements OnInit {
     }
   }
 
+  sortir(): void {
+    const scrollToTop = window.setInterval(() => {
+      const pos: number = window.pageYOffset;
+      if (pos > 0) {
+          window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+          window.clearInterval(scrollToTop);
+      }
+    }, 16);
+    this.router.navigate(['/profil']).then();
+  }
 }

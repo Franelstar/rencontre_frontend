@@ -1,7 +1,8 @@
 export class User {
   constructor(public id: number,
               public email: string,
-              public infosPersos: InfosPersonelle) {
+              public infosPersos: InfosPersonelle,
+              public infosPhysique?: InfosPhysique) {
   }
 }
 
@@ -16,5 +17,15 @@ export class InfosPersonelle {
               public age_min: number,
               public age_max: number,
               public photo?: string) {
+  }
+}
+
+export class InfosPhysique {
+  constructor(public continent: string,
+              public couleur_peau: string,
+              public taille: number,
+              public silhouette: string,
+              public couleur_yeux: string,
+              public couleur_cheuveux: string) {
   }
 }

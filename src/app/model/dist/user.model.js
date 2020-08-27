@@ -1,11 +1,12 @@
 "use strict";
 exports.__esModule = true;
-exports.InfosPersonelle = exports.User = void 0;
+exports.InfosPhysique = exports.InfosPersonelle = exports.User = void 0;
 var User = /** @class */ (function () {
-    function User(id, email, infosPersos) {
+    function User(id, email, infosPersos, infosPhysique) {
         this.id = id;
         this.email = email;
         this.infosPersos = infosPersos;
+        this.infosPhysique = infosPhysique;
     }
     return User;
 }());
@@ -26,3 +27,15 @@ var InfosPersonelle = /** @class */ (function () {
     return InfosPersonelle;
 }());
 exports.InfosPersonelle = InfosPersonelle;
+var InfosPhysique = /** @class */ (function () {
+    function InfosPhysique(continent, couleur_peau, taille, silhouette, couleur_yeux, couleur_cheuveux) {
+        this.continent = continent;
+        this.couleur_peau = couleur_peau;
+        this.taille = taille;
+        this.silhouette = silhouette;
+        this.couleur_yeux = couleur_yeux;
+        this.couleur_cheuveux = couleur_cheuveux;
+    }
+    return InfosPhysique;
+}());
+exports.InfosPhysique = InfosPhysique;

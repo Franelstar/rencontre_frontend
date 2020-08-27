@@ -23,6 +23,12 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUserInfos = function () {
         return this.http.get(environment_1.environment.apiUrl + "informationPersonnelles/" + localStorage.getItem('id'));
     };
+    UserService.prototype.getUserPhysique = function () {
+        return this.http.get(environment_1.environment.apiUrl + "informationPhysiques/" + localStorage.getItem('id'));
+    };
+    UserService.prototype.update_physiques = function (data) {
+        return this.http.post(environment_1.environment.apiUrl + "informationPhysiques/" + localStorage.getItem('id'), data).pipe(operators_1.retry(2));
+    };
     UserService = __decorate([
         core_1.Injectable({ providedIn: 'root' })
     ], UserService);

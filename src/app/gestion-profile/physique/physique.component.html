@@ -1,0 +1,70 @@
+<div class="container">
+  <!-- Default form contact -->
+  <form class="text-center border border-light mt-5"  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+     <p class="h4 mb-4">Informations sur le physique</p>
+     <div class="row">
+        <div class="col-md-2 p-3">
+
+        </div>
+         <div class="col-md">
+             <div class="row p-3">
+
+                 <!-- Taille -->
+                 <input mdbInput type="number" min="0" id="taille" class="form-control mb-4" placeholder="taille (cm)" formControlName="taille">
+
+                 <!-- continent -->
+                 <select class="browser-default custom-select mb-4" formControlName="continent">
+                     <option value="" selected disabled>Continent</option>
+                     <option value="Afrique">Afrique</option>
+                     <option value="Amérique">Amérique</option>
+                     <option value="Asie">Asie</option>
+                     <option value="Australie">Australie</option>
+                     <option value="Europe">Europe</option>
+                 </select>
+
+                 <!-- couleur_peau -->
+                 <select class="browser-default custom-select mb-4" formControlName="couleur_peau">
+                     <option value="" selected disabled>Couleur de peau</option>
+                     <option value="Noir">Noir</option>
+                     <option value="Blanche">Blanche</option>
+                     <option value="Brun">Brun</option>
+                     <option value="Metisse">Metisse</option>
+                 </select>
+
+                 <!-- silhouette -->
+                 <select class="browser-default custom-select mb-4" formControlName="silhouette">
+                  <option value="" selected disabled>Silhouette</option>
+                  <option value="Athletique">Athletique</option>
+                  <option value="Gros">Gros</option>
+                  <option value="Mince">Mince</option>
+                  <option value="Moyen">Moyen</option>
+                </select>
+
+              <!-- couleur_yeux -->
+              <select class="browser-default custom-select mb-4" formControlName="couleur_yeux">
+                <option value="" selected disabled>Couleur des yeux</option>
+                <option value="Noir">Noir</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Vert">Vert</option>
+              </select>
+
+              <!-- couleur_cheuveux -->
+              <input mdbInput type="text" id="couleur_cheuveux" class="form-control mb-4" placeholder="couleur des cheuveux" formControlName="couleur_cheuveux">
+
+
+             </div>
+         </div>
+         <div class="col-md-2 p-3">
+
+         </div>
+      </div>
+      <!-- Send button -->
+      <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+      <div class="text-center">
+       <button mdbBtn color="danger" class="my-4" (click)="sortir()">Annuler</button>
+       <button mdbBtn color="info" class="my-4" type="submit" [disabled]="signUpForm.invalid">Valider</button>
+      </div>
+ </form>
+ <!-- Default form contact -->
+</div>

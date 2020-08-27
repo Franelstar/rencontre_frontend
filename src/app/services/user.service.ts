@@ -23,4 +23,14 @@ export class UserService {
     getUserInfos(): Observable<any> {
       return this.http.get(`${environment.apiUrl}informationPersonnelles/${localStorage.getItem('id')}`);
     }
+
+    getUserPhysique(): Observable<any> {
+      return this.http.get(`${environment.apiUrl}informationPhysiques/${localStorage.getItem('id')}`);
+    }
+
+    update_physiques(data: FormData): Observable<any> {
+      return this.http.post(`${environment.apiUrl}informationPhysiques/${localStorage.getItem('id')}`, data).pipe(
+        retry(2)
+      );
+     }
 }

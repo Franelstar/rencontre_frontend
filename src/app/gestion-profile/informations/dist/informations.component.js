@@ -73,6 +73,8 @@ var InformationsComponent = /** @class */ (function () {
             if (data[0].age_min != null) {
                 _this.minValue = data[0].age_min;
                 _this.maxValue = data[0].age_max;
+                _this.user.infosPersos.age_min = data[0].age_min;
+                _this.user.infosPersos.age_max = data[0].age_max;
             }
             _this.user.infosPersos.photo = data[0].photo;
         }, function (err) {
@@ -151,6 +153,18 @@ var InformationsComponent = /** @class */ (function () {
         if (this.userSubscription != null) {
             this.userSubscription.unsubscribe();
         }
+    };
+    InformationsComponent.prototype.sortir = function () {
+        var scrollToTop = window.setInterval(function () {
+            var pos = window.pageYOffset;
+            if (pos > 0) {
+                window.scrollTo(0, pos - 20); // how far to scroll on each step
+            }
+            else {
+                window.clearInterval(scrollToTop);
+            }
+        }, 16);
+        this.router.navigate(['/profil']).then();
     };
     InformationsComponent = __decorate([
         core_1.Component({

@@ -37,6 +37,7 @@ import { InputFileConfig, InputFileModule } from 'ngx-input-file';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule } from "angular-notifier";
 import { SearchPartenerComponent } from './gestion-profile/search-partner/search-partner.component';
+import { PhysiqueComponent } from './gestion-profile/physique/physique.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -64,7 +65,8 @@ const config: InputFileConfig = {};
     InformationsComponent,
     FooterComponent,
     HomeComponent,
-    SearchPartenerComponent
+    SearchPartenerComponent,
+    PhysiqueComponent
   ],
   imports: [
     BrowserModule,

@@ -5,12 +5,14 @@ import { GestionProfileComponent } from './gestion-profile.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { SearchPartenerComponent } from './search-partner/search-partner.component';
+import { PhysiqueComponent } from './physique/physique.component';
 
 const routes: Routes = [
-    { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent, 
+    { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent,
       children: [
         { path: '', component: HomeComponent },
-        { path: 'informations', component: InformationsComponent}
+        { path: 'informations', component: InformationsComponent },
+        { path: 'physique', component: PhysiqueComponent }
       ]
     },
     { path: 'search-partner' , component: SearchPartenerComponent}

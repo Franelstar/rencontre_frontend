@@ -67,7 +67,10 @@
          <!-- Send button -->
          <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
 
-         <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="signUpForm.invalid">Valider</button>
+         <div class="text-center">
+          <button mdbBtn color="danger" class="my-4" (click)="sortir">Annuler</button>
+          <button mdbBtn color="info" class="my-4" type="submit" [disabled]="signUpForm.invalid">Valider</button>
+         </div>
     </form>
     <!-- Default form contact -->
 </div>
