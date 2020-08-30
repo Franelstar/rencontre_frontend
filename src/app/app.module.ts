@@ -38,6 +38,10 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NotifierModule } from "angular-notifier";
 import { SearchPartenerComponent } from './gestion-profile/search-partner/search-partner.component';
 import { PhysiqueComponent } from './gestion-profile/physique/physique.component';
+import { RechercheComponent } from './recherche/recherche.component';
+import {RechercheService} from '@app/services/recherche.service';
+import { ProfilComponent } from './recherche/profil/profil.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -45,6 +49,9 @@ const appRoutes: Routes = [
   { path: 'auth/signin', canActivate: [AuthGuardInv], component: SigninComponent, data: { title: 'Authentification' } },
   { path: 'auth/signup', canActivate: [AuthGuardInv], component: SignupComponent },
   { path: 'profil', canActivate: [AuthGuard], component: GestionProfileComponent },
+  { path: 'recherche', canActivate: [AuthGuard], component: RechercheComponent },
+  { path: 'recherche/:id', canActivate: [AuthGuard], component: ProfilComponent },
+  { path: 'about', component: AboutComponent },
   { path: '', component: IndexViewComponent, pathMatch: 'full' },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: '/not-found' }
@@ -66,7 +73,10 @@ const config: InputFileConfig = {};
     FooterComponent,
     HomeComponent,
     SearchPartenerComponent,
-    PhysiqueComponent
+    PhysiqueComponent,
+    RechercheComponent,
+    ProfilComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -136,7 +146,8 @@ const config: InputFileConfig = {};
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthService,
     AuthGuard,
-    AuthGuardInv
+    AuthGuardInv,
+    RechercheService
   ],
 
   bootstrap: [AppComponent]

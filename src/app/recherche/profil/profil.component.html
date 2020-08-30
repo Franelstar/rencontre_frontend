@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h4>Informations personnelles</h4>
+            <p><span class="text-default">Nom</span> : {{ user.infosPersos.nom }}</p>
+            <p><span class="text-default">Prenom</span> : {{ user.infosPersos.prenom }}</p>
+            <p><span class="text-default">Sexe</span> : {{ user.infosPersos.sexe }}</p>
+            <p><span class="text-default">Age</span> : {{ age }} ans</p>
+            <p><span class="text-default">A propos</span> : {{ user.infosPersos.apropro }}</p>
+          </div>
+          <div class="col-sm">
+            <h4>Informations sur le physique</h4>
+            <p><span class="text-default">Continent</span> : {{ user.infosPhysique.continent }}</p>
+            <p><span class="text-default">Couleur de la peau</span> : {{ user.infosPhysique.couleur_peau }}</p>
+            <p><span class="text-default">Taille</span> : {{ user.infosPhysique.taille }} cm</p>
+            <p><span class="text-default">Silhouette</span> : {{ user.infosPhysique.silhouette }}</p>
+            <p><span class="text-default">Couleur des yeux</span> : {{ user.infosPhysique.couleur_yeux }}</p>
+            <p><span class="text-default">Couleur des cheuveux</span> : {{ user.infosPhysique.couleur_cheuveux }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <img style="height: 255px" class="card-img-top mx-auto d-block" [src]="base_url+user.infosPersos.photo" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <button mdbBtn color="danger" class="my-4" *ngIf="!invite"(click)="annulerInvitation()">Annuler l'invitation</button>
+  <button mdbBtn color="info" class="my-4" *ngIf="invite" (click)="inviter()" >Inviter à discuter</button>
+ </div>

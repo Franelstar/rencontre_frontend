@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       localStorage.removeItem('email');
       this.router.navigate(['/home']);
       this.isAuth = false;
-      console.log(this.isAuth)
+      this.url_image = 'profile.jpg';
     });
   }
 

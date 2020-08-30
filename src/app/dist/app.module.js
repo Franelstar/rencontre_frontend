@@ -45,12 +45,20 @@ var ngx_input_file_1 = require("ngx-input-file");
 var ng5_slider_1 = require("ng5-slider");
 var angular_notifier_1 = require("angular-notifier");
 var search_partner_component_1 = require("./gestion-profile/search-partner/search-partner.component");
+var physique_component_1 = require("./gestion-profile/physique/physique.component");
+var recherche_component_1 = require("./recherche/recherche.component");
+var recherche_service_1 = require("@app/services/recherche.service");
+var profil_component_1 = require("./recherche/profil/profil.component");
+var about_component_1 = require("./about/about.component");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: index_view_component_1.IndexViewComponent },
     { path: 'auth/signin', canActivate: [auth_guard_service_inv_1.AuthGuardInv], component: signin_component_1.SigninComponent, data: { title: 'Authentification' } },
     { path: 'auth/signup', canActivate: [auth_guard_service_inv_1.AuthGuardInv], component: signup_component_1.SignupComponent },
     { path: 'profil', canActivate: [auth_guard_service_1.AuthGuard], component: gestion_profile_component_1.GestionProfileComponent },
+    { path: 'recherche', canActivate: [auth_guard_service_1.AuthGuard], component: recherche_component_1.RechercheComponent },
+    { path: 'recherche/:id', canActivate: [auth_guard_service_1.AuthGuard], component: profil_component_1.ProfilComponent },
+    { path: 'about', component: about_component_1.AboutComponent },
     { path: '', component: index_view_component_1.IndexViewComponent, pathMatch: 'full' },
     { path: 'not-found', component: four_oh_four_component_1.FourOhFourComponent },
     { path: '**', redirectTo: '/not-found' }
@@ -73,7 +81,11 @@ var AppModule = /** @class */ (function () {
                 informations_component_1.InformationsComponent,
                 footer_component_1.FooterComponent,
                 home_component_1.HomeComponent,
-                search_partner_component_1.SearchPartenerComponent
+                search_partner_component_1.SearchPartenerComponent,
+                physique_component_1.PhysiqueComponent,
+                recherche_component_1.RechercheComponent,
+                profil_component_1.ProfilComponent,
+                about_component_1.AboutComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -141,7 +153,8 @@ var AppModule = /** @class */ (function () {
                 { provide: http_1.HTTP_INTERCEPTORS, useClass: error_interceptor_1.ErrorInterceptor, multi: true },
                 auth_service_1.AuthService,
                 auth_guard_service_1.AuthGuard,
-                auth_guard_service_inv_1.AuthGuardInv
+                auth_guard_service_inv_1.AuthGuardInv,
+                recherche_service_1.RechercheService
             ],
             bootstrap: [app_component_1.AppComponent]
         })

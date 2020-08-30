@@ -1,0 +1,104 @@
+<button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+  Filtres
+</button>
+
+<div class="" mdbCollapse #test="bs-collapse">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="custom-slider row">
+          <label>Agé(e) de </label>
+          <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <select class="browser-default custom-select mb-4">
+          <option value="" selected disabled>Continent</option>
+          <option value="Afrique">Afrique</option>
+          <option value="Amérique">Amérique</option>
+          <option value="Asie">Asie</option>
+          <option value="Australie">Australie</option>
+          <option value="Europe">Europe</option>
+      </select>
+      </div>
+      <div class="col-sm-3">
+        <!-- couleur_peau -->
+        <select class="browser-default custom-select mb-4">
+          <option value="" selected disabled>Couleur de peau</option>
+          <option value="Noir">Noir</option>
+          <option value="Blanche">Blanche</option>
+          <option value="Brun">Brun</option>
+          <option value="Metisse">Metisse</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <button mdbBtn color="success" class="my-4" (click)="chercher()">Chercher</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-3" *ngIf="loader">
+  <div class="spinner-grow text-primary" role="status" style="width: 100px;height: 100px;">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<!-- Section: Group of personal cards -->
+<section class="my-5">
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-3 mt-2" *ngFor="let user of users">
+
+      <!-- Card group-->
+      <div class="card-group">
+
+        <!-- Card -->
+        <mdb-card class="card-personal mb-md-0 mb-4">
+
+          <!-- Card image-->
+          <div class="view overlay">
+            <img style="height: 255px" class="card-img-top mx-auto d-block" [src]="base_url+user.information_personnelles.photo" alt="">
+            <a routerLink="/recherche/{{ user.id }}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image-->
+
+          <!-- Card content -->
+          <mdb-card-body>
+
+            <!-- Title-->
+            <mdb-card-title>
+              <a routerLink="/recherche/{{ user.id }}">
+                <h4 class="card-title">{{ user.information_personnelles.nom }} {{ user.information_personnelles.prenom }}</h4>
+              </a>
+            </mdb-card-title>
+
+            <a class="card-meta">{{ user.age }} ans</a>
+            <!-- Text -->
+            <mdb-card-text class="card-text">{{ user.information_personnelles.apropro }}</mdb-card-text>
+            <hr>
+            <a class="card-meta"><span><mdb-icon fas icon="heart" class="red-text pr-3" aria-hidden="true"></mdb-icon></span></a>
+            <p class="card-meta float-right card-text">Rejoint en {{ user.updated_at | date:'MMM yyyy' }}</p>
+
+          </mdb-card-body>
+          <!-- Card content -->
+
+        </mdb-card>
+        <!-- Card -->
+
+      </div>
+      <!-- Card group-->
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!-- Section: Group of personal cards -->

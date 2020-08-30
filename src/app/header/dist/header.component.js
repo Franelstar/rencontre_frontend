@@ -62,7 +62,7 @@ var HeaderComponent = /** @class */ (function () {
             localStorage.removeItem('email');
             _this.router.navigate(['/home']);
             _this.isAuth = false;
-            console.log(_this.isAuth);
+            _this.url_image = 'profile.jpg';
         });
     };
     HeaderComponent = __decorate([
